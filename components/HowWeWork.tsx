@@ -55,22 +55,36 @@ export default function HowWeWork() {
         <div className="text-center mb-16 space-y-4">
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold tracking-widest uppercase"
-            style={{ borderColor: "#A61C26", color: "#A61C26", background: "rgba(166,28,38,0.06)" }}
+            style={{
+              borderColor: "#A61C26",
+              color: "#A61C26",
+              background: "rgba(166,28,38,0.06)",
+            }}
           >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#A61C26" }} />
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: "#A61C26" }}
+            />
             Our Process
           </div>
           <h2 className="text-5xl font-extrabold text-gray-900">
             How We Work With You
           </h2>
+          <p className="text-gray-500 text-base max-w-lg mx-auto">
+            A proven three-step approach that turns complexity into clarity—fast.
+          </p>
         </div>
 
         {/* Steps */}
         <div className="relative grid md:grid-cols-3 gap-8">
           {/* Connecting line */}
           <div
-            className="hidden md:block absolute top-16 left-1/3 right-1/3 h-px"
-            style={{ background: "linear-gradient(90deg, #CDA634 0%, #CDA634 100%)", opacity: 0.3 }}
+            className="hidden md:block absolute top-10 left-[calc(16.66%+2rem)] right-[calc(16.66%+2rem)] h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, #CDA634 30%, #CDA634 70%, transparent)",
+              opacity: 0.4,
+            }}
           />
 
           {steps.map((step, i) => (
@@ -81,7 +95,7 @@ export default function HowWeWork() {
                   {step.icon}
                 </div>
                 <span
-                  className="absolute -top-3 -right-3 w-7 h-7 rounded-full text-white text-xs font-extrabold flex items-center justify-center"
+                  className="absolute -top-3 -right-3 w-7 h-7 rounded-full text-white text-xs font-extrabold flex items-center justify-center shadow-md"
                   style={{ background: "#CDA634" }}
                 >
                   {step.number}

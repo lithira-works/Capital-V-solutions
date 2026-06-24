@@ -24,25 +24,42 @@ export default function Challenge() {
             <span className="text-gray-500">Fragile tech foundations.</span>
           </h2>
           <p className="text-gray-400 leading-relaxed text-base max-w-md">
-            Many enterprises have big digital ambitions but are held back by
-            legacy systems, siloed data, and fragile integrations. Instead of
-            accelerating the business, technology becomes the bottleneck that
-            stalls growth and innovation.
+            Many enterprises have{" "}
+            <span style={{ color: "#CDA634" }}>big digital ambitions</span> but
+            are held back by legacy systems,{" "}
+            <span style={{ color: "#CDA634" }}>siloed data</span>, and{" "}
+            <span style={{ color: "#CDA634" }}>fragile integrations</span>.
+            Instead of accelerating the business, technology becomes the
+            bottleneck that stalls growth and innovation.
           </p>
         </div>
 
         {/* Right – Roadblocks card */}
         <div
           className="rounded-2xl p-8 space-y-5"
-          style={{ border: "1px solid #CDA634", background: "rgba(205,166,52,0.04)" }}
+          style={{
+            border: "1px solid rgba(205,166,52,0.4)",
+            background: "rgba(205,166,52,0.04)",
+          }}
         >
+          {/* Card header */}
           <div className="flex items-center gap-3 mb-6">
             <span
-              className="w-5 h-5 rounded-full flex items-center justify-center"
+              className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: "#A61C26" }}
             >
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <path d="M5 2V5L7 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+              {/* ⊘ stop/warning icon */}
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <circle cx="6" cy="6" r="5" stroke="white" strokeWidth="1.4" />
+                <line
+                  x1="3"
+                  y1="3"
+                  x2="9"
+                  y2="9"
+                  stroke="white"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
               </svg>
             </span>
             <h3 className="text-white font-bold text-lg">Common Roadblocks</h3>
@@ -65,7 +82,9 @@ export default function Challenge() {
                     />
                   </svg>
                 </span>
-                <span className="text-gray-300 text-sm leading-relaxed">{item}</span>
+                <span className="text-gray-300 text-sm leading-relaxed">
+                  {item}
+                </span>
               </li>
             ))}
           </ul>

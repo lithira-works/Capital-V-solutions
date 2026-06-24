@@ -67,14 +67,24 @@ export default function OurPillars() {
         <div className="text-center mb-16 space-y-4">
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold tracking-widest uppercase"
-            style={{ borderColor: "#CDA634", color: "#CDA634", background: "rgba(205,166,52,0.07)" }}
+            style={{
+              borderColor: "#CDA634",
+              color: "#CDA634",
+              background: "rgba(205,166,52,0.08)",
+            }}
           >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#CDA634" }} />
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: "#CDA634" }}
+            />
             Our Foundation
           </div>
           <h2 className="text-5xl font-extrabold text-gray-900">Our Pillars</h2>
           <p className="text-gray-500 text-base max-w-xl mx-auto">
-            We focus on the three critical layers of modern enterprise technology.
+            We focus on the{" "}
+            <span style={{ color: "#CDA634" }}>thr</span>ee critical layers of
+            modern{" "}
+            <span style={{ color: "#CDA634" }}>en</span>terprise technology.
           </p>
         </div>
 
@@ -83,26 +93,33 @@ export default function OurPillars() {
           {pillars.map((p, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-8 relative overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300"
+              className="bg-white rounded-2xl p-8 relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              style={{
+                border: "1px solid rgba(205,166,52,0.25)",
+              }}
             >
               {/* Background number */}
               <span
                 className="absolute top-4 right-6 text-7xl font-black select-none pointer-events-none"
-                style={{ color: "rgba(205,166,52,0.12)" }}
+                style={{ color: "rgba(205,166,52,0.10)", lineHeight: 1 }}
               >
                 {p.number}
               </span>
 
               {/* Icon */}
               <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center mb-6"
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
                 style={{ background: "#111111" }}
               >
                 {p.icon}
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{p.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">{p.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {p.title}
+              </h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                {p.description}
+              </p>
 
               <ul className="space-y-2">
                 {p.features.map((f, j) => (

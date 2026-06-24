@@ -4,7 +4,12 @@ const differentiators = [
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <circle cx="10" cy="10" r="8" stroke="#CDA634" strokeWidth="1.6" />
         <circle cx="10" cy="10" r="3" stroke="#CDA634" strokeWidth="1.6" />
-        <path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="#CDA634" strokeWidth="1.6" strokeLinecap="round" />
+        <path
+          d="M10 2v2M10 16v2M2 10h2M16 10h2"
+          stroke="#CDA634"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     title: "Business-first engineering",
@@ -14,7 +19,12 @@ const differentiators = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M4 6h12M4 10h8M4 14h10" stroke="#CDA634" strokeWidth="1.6" strokeLinecap="round" />
+        <path
+          d="M4 6h12M4 10h8M4 14h10"
+          stroke="#CDA634"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
         <rect x="2" y="3" width="16" height="14" rx="2" stroke="#CDA634" strokeWidth="1.6" />
       </svg>
     ),
@@ -26,7 +36,12 @@ const differentiators = [
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <rect x="3" y="5" width="14" height="10" rx="2" stroke="#CDA634" strokeWidth="1.6" />
-        <path d="M7 9h6M7 12h4" stroke="#CDA634" strokeWidth="1.5" strokeLinecap="round" />
+        <path
+          d="M7 9h6M7 12h4"
+          stroke="#CDA634"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     title: "Modern, proven stack",
@@ -42,7 +57,12 @@ const differentiators = [
           strokeWidth="1.6"
           strokeLinejoin="round"
         />
-        <path d="M10 9v4M10 7v.5" stroke="#CDA634" strokeWidth="1.6" strokeLinecap="round" />
+        <path
+          d="M10 9v4M10 7v.5"
+          stroke="#CDA634"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     title: "Embedded partnership",
@@ -56,12 +76,19 @@ export default function CapitalVDifference() {
     <section style={{ background: "#111111" }} className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-16 space-y-5">
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold tracking-widest uppercase"
-            style={{ borderColor: "#CDA634", color: "#CDA634", background: "rgba(205,166,52,0.07)" }}
+            style={{
+              borderColor: "rgba(205,166,52,0.4)",
+              color: "#CDA634",
+              background: "rgba(205,166,52,0.07)",
+            }}
           >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#CDA634" }} />
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: "#CDA634" }}
+            />
             Why Choose Us
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold text-white">
@@ -69,8 +96,10 @@ export default function CapitalVDifference() {
             <span style={{ color: "#CDA634" }}>V</span>{" "}
             Difference
           </h2>
-          <p className="text-gray-400 text-base max-w-xl mx-auto">
-            We don&apos;t just build technology—we create transformative solutions
+          <p className="text-gray-400 text-base max-w-xl mx-auto leading-relaxed">
+            We don&apos;t just build technology—we create{" "}
+            <span style={{ color: "#CDA634" }}>transformative solutions</span>
+            <br />
             that drive real business value.
           </p>
         </div>
@@ -80,10 +109,10 @@ export default function CapitalVDifference() {
           {differentiators.map((d, i) => (
             <div
               key={i}
-              className="rounded-2xl p-7 space-y-4 hover:border-yellow-500/30 transition-all duration-300 hover:-translate-y-1"
+              className="rounded-2xl p-7 space-y-4 transition-all duration-300 hover:-translate-y-1 cursor-default"
               style={{
                 background: "#1a1a1a",
-                border: "1px solid #2a2a2a",
+                border: "1px solid #252525",
               }}
             >
               <div
@@ -92,8 +121,12 @@ export default function CapitalVDifference() {
               >
                 {d.icon}
               </div>
-              <h3 className="text-white font-bold text-base leading-snug">{d.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{d.description}</p>
+              <h3 className="text-white font-bold text-base leading-snug">
+                {d.title}
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                {d.description}
+              </p>
             </div>
           ))}
         </div>

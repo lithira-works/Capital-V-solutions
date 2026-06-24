@@ -1,8 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import { useRef, useState } from "react";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   return (
     <section
       id="home"
@@ -99,19 +102,33 @@ export default function Hero() {
               }}
             />
 
-            {/* Capital V logo image centred */}
-            <div className="relative z-10 flex items-center justify-center w-full h-full p-10">
-              <Image
-                src="/capitalvimage.PNG"
-                alt="Capital V Solutions – Enterprise Technology"
-                width={400}
-                height={300}
-                className="w-full h-full object-contain drop-shadow-2xl"
-                priority
-              />
-            </div>
+            {/* Video */}
+            <video
+              ref={videoRef}
+              src="/videos/capitalvvideo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              onLoadedData={() => setVideoLoaded(true)}
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+              style={{ opacity: videoLoaded ? 1 : 0 }}
+            />
 
-            {/* Subtle radial glow behind the logo */}
+            {/* Loading shimmer while video loads */}
+            {!videoLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className="w-10 h-10 rounded-full border-2 border-t-transparent animate-spin"
+                  style={{
+                    borderColor: "rgba(205,166,52,0.4)",
+                    borderTopColor: "#CDA634",
+                  }}
+                />
+              </div>
+            )}
+
+            {/* Subtle radial glow */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{

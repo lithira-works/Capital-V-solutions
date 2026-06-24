@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import HeroVideo from "@/components/HeroVideo";
+
 import Challenge from "@/components/Challenge";
 import OurPillars from "@/components/OurPillars";
 import CapitalVDifference from "@/components/CapitalVDifference";
@@ -17,7 +17,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <HeroVideo />
+
         <Challenge />
         <OurPillars />
         <CapitalVDifference />

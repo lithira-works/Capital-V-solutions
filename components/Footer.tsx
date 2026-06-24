@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Footer() {
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -12,24 +14,30 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 pb-12 border-b border-white/10">
           {/* Brand */}
           <div className="space-y-4 md:col-span-2">
-            <div className="flex items-center gap-2">
-              <span
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-black"
+            <div className="flex items-center gap-2.5">
+              <div
+                className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center flex-shrink-0 shadow-sm"
                 style={{
                   background:
                     "linear-gradient(135deg, #A61C26 50%, #CDA634 100%)",
                 }}
               >
-                V
-              </span>
+                <Image
+                  src="/capitalvimage.PNG"
+                  alt="Capital V Solutions Logo"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span className="font-semibold text-[15px] text-white tracking-tight">
                 Capital <span style={{ color: "#CDA634" }}>V</span> Solutions
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              Building technology backbones that power modern enterprises through
-              robust platforms, intelligent data foundations, and AI-driven
-              automation.
+              Building technology backbones that power modern enterprises
+              through robust platforms, intelligent data foundations, and
+              AI-driven automation.
             </p>
             {/* Social icons */}
             <div className="flex gap-3 pt-1">

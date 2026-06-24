@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -19,7 +20,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Auto-detect active section based on scroll position
       const sections = links.map((l) => ({
         label: l.label,
         el: document.querySelector(l.href),
@@ -64,22 +64,29 @@ export default function Navbar() {
             e.preventDefault();
             handleNav("Home", "#home");
           }}
-          className="flex items-center gap-2 cursor-pointer group"
+          className="flex items-center gap-2.5 cursor-pointer group"
         >
-          <span
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-black shadow-sm group-hover:shadow-md transition-shadow"
+          {/* Logo image as the V icon */}
+          <div
+            className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center flex-shrink-0 shadow-sm group-hover:shadow-md transition-shadow"
             style={{
               background: "linear-gradient(135deg, #A61C26 50%, #CDA634 100%)",
             }}
           >
-            V
-          </span>
+            <Image
+              src="/capitalvimage.PNG"
+              alt="Capital V Solutions Logo"
+              width={36}
+              height={36}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <span className="font-semibold text-[15px] text-gray-900 tracking-tight">
             Capital <span style={{ color: "#CDA634" }}>V</span> Solutions
           </span>
         </a>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav pills */}
         <div className="hidden md:flex items-center border border-gray-200 rounded-full px-2 py-1 gap-1 bg-white shadow-sm">
           {links.map((link) => (
             <button
@@ -97,7 +104,7 @@ export default function Navbar() {
         </div>
 
         {/* CTA button – desktop */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center">
           <button
             onClick={() => handleNav("Contact", "#contact")}
             className="px-5 py-2 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"

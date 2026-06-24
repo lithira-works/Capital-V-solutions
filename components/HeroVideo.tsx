@@ -4,84 +4,7 @@ import { useRef, useState, useEffect } from "react";
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoExists, setVideoExists] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // Check if video file is available
-    fetch("/videos/hero.mp4", { method: "HEAD" })
-      .then((res) => {
-        if (!res.ok) setVideoExists(false);
-      })
-      .catch(() => setVideoExists(false));
-  }, []);
-
-  if (!videoExists) {
-    // Elegant placeholder when no video is placed yet
-    return (
-      <section
-        className="relative w-full flex items-center justify-center overflow-hidden"
-        style={{
-          minHeight: "60vh",
-          background:
-            "linear-gradient(135deg, #111111 0%, #1a1a1a 40%, #111111 100%)",
-        }}
-      >
-        {/* Decorative grid pattern */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "linear-gradient(#CDA634 1px, transparent 1px), linear-gradient(90deg, #CDA634 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="relative z-10 text-center px-6 space-y-6 max-w-2xl mx-auto">
-          {/* Video icon */}
-          <div
-            className="w-20 h-20 rounded-2xl mx-auto flex items-center justify-center"
-            style={{ background: "rgba(205,166,52,0.12)", border: "1px solid rgba(205,166,52,0.3)" }}
-          >
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="18" r="16" stroke="#CDA634" strokeWidth="1.5" />
-              <path
-                d="M14 12.5L26 18L14 23.5V12.5Z"
-                fill="#CDA634"
-                stroke="#CDA634"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div>
-            <p
-              className="text-xs font-bold tracking-widest uppercase mb-3"
-              style={{ color: "#CDA634" }}
-            >
-              Video Showcase
-            </p>
-            <h2 className="text-3xl font-extrabold text-white mb-3">
-              See Capital V in Action
-            </h2>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Drop your video file at{" "}
-              <code
-                className="px-2 py-0.5 rounded text-xs"
-                style={{
-                  background: "rgba(205,166,52,0.15)",
-                  color: "#CDA634",
-                  fontFamily: "monospace",
-                }}
-              >
-                public/videos/hero.mp4
-              </code>{" "}
-              to display it here.
-            </p>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section
@@ -91,7 +14,7 @@ export default function HeroVideo() {
       {/* Video element */}
       <video
         ref={videoRef}
-        src="/videos/hero.mp4"
+        src="/videos/capitalvvideo.mp4"
         autoPlay
         muted
         loop
@@ -101,21 +24,48 @@ export default function HeroVideo() {
         style={{ opacity: isLoaded ? 1 : 0 }}
       />
 
-      {/* Gradient overlays for legibility */}
+      {/* Loading shimmer while video loads */}
+      {!isLoaded && (
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%)",
+          }}
+        >
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage:
+                "linear-gradient(#CDA634 1px, transparent 1px), linear-gradient(90deg, #CDA634 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+              <div
+                className="w-12 h-12 rounded-full border-2 border-t-transparent animate-spin"
+                style={{ borderColor: "rgba(205,166,52,0.4)", borderTopColor: "#CDA634" }}
+              />
+              <span className="text-gray-500 text-xs tracking-widest uppercase">Loading</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Gradient overlays */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.6) 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.55) 100%)",
         }}
       />
-
-      {/* Side vignette */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%)",
+            "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 100%)",
         }}
       />
 
@@ -133,7 +83,7 @@ export default function HeroVideo() {
             }}
           >
             <span
-              className="w-1.5 h-1.5 rounded-full"
+              className="w-1.5 h-1.5 rounded-full animate-pulse"
               style={{ background: "#CDA634" }}
             />
             See How We Work
@@ -182,7 +132,7 @@ export default function HeroVideo() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-70">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60">
         <span className="text-white text-xs tracking-widest uppercase font-medium">
           Scroll
         </span>

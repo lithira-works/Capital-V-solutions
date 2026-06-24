@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section
@@ -8,7 +10,7 @@ export default function Hero() {
       style={{ background: "#F7F4EF" }}
     >
       <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center w-full">
-        {/* Left */}
+        {/* ── Left ── */}
         <div className="space-y-8">
           {/* Badge */}
           <div
@@ -77,39 +79,44 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right */}
+        {/* ── Right ── */}
         <div className="relative flex flex-col gap-4">
-          {/* Globe image */}
-          <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3] relative bg-gray-100">
-            <img
-              src="https://capital-v-solutions.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fglobe.6c59d0a6.jpg&w=1080&q=75"
-              alt="Golden globe representing global enterprise technology"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                const target = e.currentTarget;
-                target.style.display = "none";
-                const parent = target.parentElement;
-                if (parent) {
-                  parent.style.background =
-                    "linear-gradient(135deg, #1a1206 0%, #2d2107 40%, #1a1206 100%)";
-                  parent.innerHTML = `
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;">
-                      <svg width="180" height="180" viewBox="0 0 180 180" fill="none">
-                        <circle cx="90" cy="90" r="80" stroke="#CDA634" stroke-width="1.5" fill="none" opacity="0.6"/>
-                        <ellipse cx="90" cy="90" rx="40" ry="80" stroke="#CDA634" stroke-width="1" fill="none" opacity="0.4"/>
-                        <ellipse cx="90" cy="90" rx="70" ry="30" stroke="#CDA634" stroke-width="1" fill="none" opacity="0.4"/>
-                        <line x1="10" y1="90" x2="170" y2="90" stroke="#CDA634" stroke-width="1" opacity="0.3"/>
-                        <line x1="90" y1="10" x2="90" y2="170" stroke="#CDA634" stroke-width="1" opacity="0.3"/>
-                        <circle cx="90" cy="90" r="6" fill="#CDA634" opacity="0.8"/>
-                        <circle cx="55" cy="65" r="3" fill="#A61C26" opacity="0.9"/>
-                        <circle cx="130" cy="75" r="3" fill="#A61C26" opacity="0.9"/>
-                        <circle cx="110" cy="115" r="3" fill="#A61C26" opacity="0.9"/>
-                        <line x1="90" y1="90" x2="55" y2="65" stroke="#CDA634" stroke-width="0.8" opacity="0.5"/>
-                        <line x1="90" y1="90" x2="130" y2="75" stroke="#CDA634" stroke-width="0.8" opacity="0.5"/>
-                        <line x1="90" y1="90" x2="110" y2="115" stroke="#CDA634" stroke-width="0.8" opacity="0.5"/>
-                      </svg>
-                    </div>`;
-                }
+          {/* Logo image box — dark animated card */}
+          <div
+            className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3] relative flex items-center justify-center"
+            style={{
+              background:
+                "linear-gradient(135deg, #1a1206 0%, #2a1e07 40%, #1a1206 100%)",
+            }}
+          >
+            {/* Subtle animated grid */}
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(205,166,52,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(205,166,52,0.4) 1px, transparent 1px)",
+                backgroundSize: "40px 40px",
+              }}
+            />
+
+            {/* Capital V logo image centred */}
+            <div className="relative z-10 flex items-center justify-center w-full h-full p-10">
+              <Image
+                src="/capitalvimage.PNG"
+                alt="Capital V Solutions – Enterprise Technology"
+                width={400}
+                height={300}
+                className="w-full h-full object-contain drop-shadow-2xl"
+                priority
+              />
+            </div>
+
+            {/* Subtle radial glow behind the logo */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(205,166,52,0.12) 0%, transparent 70%)",
               }}
             />
           </div>
@@ -117,7 +124,10 @@ export default function Hero() {
           {/* Stats card */}
           <div className="bg-white rounded-2xl shadow-md px-8 py-5 flex items-center justify-around border border-gray-100">
             <div className="text-center">
-              <p className="text-3xl font-extrabold" style={{ color: "#CDA634" }}>
+              <p
+                className="text-3xl font-extrabold"
+                style={{ color: "#CDA634" }}
+              >
                 99.9%
               </p>
               <p className="text-xs text-gray-400 tracking-widest uppercase mt-1 font-medium">
@@ -126,7 +136,10 @@ export default function Hero() {
             </div>
             <div className="w-px h-10 bg-gray-200" />
             <div className="text-center">
-              <p className="text-3xl font-extrabold" style={{ color: "#A61C26" }}>
+              <p
+                className="text-3xl font-extrabold"
+                style={{ color: "#A61C26" }}
+              >
                 24/7
               </p>
               <p className="text-xs text-gray-400 tracking-widest uppercase mt-1 font-medium">

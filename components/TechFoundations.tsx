@@ -1,140 +1,107 @@
 "use client";
 
-import React from "react";
+import {
+  SiNodedotjs,
+  SiPostgresql,
+  SiTypescript,
+  SiPython,
+  SiReact,
+  SiDocker,
+  SiNextdotjs,
+  SiMongodb,
+} from "react-icons/si";
 
-const technologies = [
+type Tech = {
+  name: string;
+  Icon: React.ComponentType<{ size?: number; color?: string }>;
+  color: string;
+  bg: string;
+};
+
+const technologies: Tech[] = [
   {
     name: "Node.js",
+    Icon: SiNodedotjs,
     color: "#68A063",
-    bg: "rgba(104,160,99,0.1)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <path d="M20 4L34 12.5V27.5L20 36L6 27.5V12.5L20 4Z" fill="#68A063" opacity="0.15" stroke="#68A063" strokeWidth="1.2" />
-        <text x="20" y="24" textAnchor="middle" fontSize="7.5" fontWeight="700" fill="#68A063" fontFamily="system-ui, sans-serif">node</text>
-      </svg>
-    ),
+    bg: "rgba(104,160,99,0.12)",
   },
   {
     name: "PostgreSQL",
+    Icon: SiPostgresql,
     color: "#336791",
-    bg: "rgba(51,103,145,0.1)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <ellipse cx="20" cy="13" rx="12" ry="5" fill="#336791" opacity="0.15" stroke="#336791" strokeWidth="1.2" />
-        <path d="M8 13v10c0 2.76 5.37 5 12 5s12-2.24 12-5V13" stroke="#336791" strokeWidth="1.2" />
-        <path d="M8 18c0 2.76 5.37 5 12 5s12-2.24 12-5" stroke="#336791" strokeWidth="1.2" />
-      </svg>
-    ),
+    bg: "rgba(51,103,145,0.12)",
   },
   {
-    name: "Azure",
-    color: "#0078D4",
-    bg: "rgba(0,120,212,0.1)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <path d="M6 32h28L23 9 15 22l-5-5L6 32Z" fill="#0078D4" opacity="0.15" stroke="#0078D4" strokeWidth="1.2" strokeLinejoin="round" />
-      </svg>
-    ),
+    name: "TypeScript",
+    Icon: SiTypescript,
+    color: "#3178C6",
+    bg: "rgba(49,120,198,0.12)",
   },
   {
     name: "Python",
-    color: "#3B7BBF",
-    bg: "rgba(59,123,191,0.1)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <path d="M14 7c0-2.21 1.79-4 4-4h4c2.21 0 4 1.79 4 4v4H14V7Z" fill="#3B7BBF" opacity="0.2" stroke="#3B7BBF" strokeWidth="1.2" />
-        <rect x="14" y="11" width="12" height="9" stroke="#3B7BBF" strokeWidth="1.2" />
-        <path d="M26 20c0 2.21-1.79 4-4 4h-4c-2.21 0-4-1.79-4-4v-4h12v4Z" fill="#FFD43B" opacity="0.2" stroke="#FFD43B" strokeWidth="1.2" />
-        <circle cx="16" cy="9" r="1" fill="#3B7BBF" />
-        <circle cx="24" cy="31" r="1" fill="#FFD43B" />
-      </svg>
-    ),
+    Icon: SiPython,
+    color: "#3776AB",
+    bg: "rgba(55,118,171,0.12)",
   },
   {
     name: "React",
+    Icon: SiReact,
     color: "#61DAFB",
-    bg: "rgba(97,218,251,0.1)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <circle cx="20" cy="20" r="3.5" fill="#61DAFB" />
-        <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#61DAFB" strokeWidth="1.2" fill="none" />
-        <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#61DAFB" strokeWidth="1.2" fill="none" transform="rotate(60 20 20)" />
-        <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#61DAFB" strokeWidth="1.2" fill="none" transform="rotate(120 20 20)" />
-      </svg>
-    ),
+    bg: "rgba(97,218,251,0.12)",
   },
   {
-    name: "Power BI",
-    color: "#F2C811",
-    bg: "rgba(242,200,17,0.1)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <rect x="4" y="22" width="7" height="14" rx="1.5" fill="#F2C811" />
-        <rect x="14" y="16" width="7" height="20" rx="1.5" fill="#F2C811" />
-        <rect x="24" y="10" width="7" height="26" rx="1.5" fill="#F2C811" />
-        <rect x="34" y="5" width="3" height="31" rx="1.5" fill="#F2C811" opacity="0.4" />
-      </svg>
-    ),
-  },
-  {
-    name: "AWS",
-    color: "#FF9900",
-    bg: "rgba(255,153,0,0.1)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <path d="M8 26c0-2 1.5-3.5 3.5-3.5h17c2 0 3.5 1.5 3.5 3.5s-1.5 3.5-3.5 3.5h-17C9.5 29.5 8 28 8 26Z" fill="#FF9900" opacity="0.15" stroke="#FF9900" strokeWidth="1.2" />
-        <path d="M13 22.5l-3-7.5 3-7.5" stroke="#FF9900" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M27 22.5l3-7.5-3-7.5" stroke="#FF9900" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
+    name: "Docker",
+    Icon: SiDocker,
+    color: "#2496ED",
+    bg: "rgba(36,150,237,0.12)",
   },
   {
     name: "Next.js",
-    color: "#111111",
-    bg: "rgba(0,0,0,0.06)",
-    icon: (
-      <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-        <circle cx="20" cy="20" r="16" fill="#000" opacity="0.06" stroke="#111" strokeWidth="1.2" />
-        <text x="20" y="17" textAnchor="middle" fontSize="6" fontWeight="900" fill="#111" fontFamily="system-ui">NEXT</text>
-        <text x="20" y="25" textAnchor="middle" fontSize="5.5" fontWeight="700" fill="#555" fontFamily="system-ui">.JS</text>
-      </svg>
-    ),
+    Icon: SiNextdotjs,
+    color: "#000000",
+    bg: "rgba(0,0,0,0.07)",
+  },
+  {
+    name: "MongoDB",
+    Icon: SiMongodb,
+    color: "#47A248",
+    bg: "rgba(71,162,72,0.12)",
   },
 ];
 
-// Duplicate for seamless infinite loop
+// Duplicate for seamless infinite loop (-50% translateX lands exactly at the start of the second copy)
 const allTechs = [...technologies, ...technologies];
 
-function TechCard({
-  tech,
-}: {
-  tech: { name: string; color: string; bg: string; icon: React.ReactNode };
-}) {
+function TechCard({ tech }: { tech: Tech }) {
+  const { name, Icon, color, bg } = tech;
   return (
     <div
-      className="flex flex-col items-center justify-center gap-3 cursor-default group select-none"
-      style={{ minWidth: "110px" }}
+      className="flex flex-col items-center gap-3 cursor-default group select-none"
+      style={{ minWidth: "120px" }}
     >
+      {/* White card */}
       <div
-        className="w-[88px] h-[88px] rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
+        className="w-[92px] h-[92px] rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1"
         style={{
-          background: "#fff",
-          border: "1px solid rgba(0,0,0,0.06)",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+          background: "#ffffff",
+          border: "1px solid rgba(0,0,0,0.07)",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
         }}
       >
+        {/* Coloured icon background bubble */}
         <div
-          className="w-14 h-14 rounded-xl flex items-center justify-center"
-          style={{ background: tech.bg }}
+          className="w-[58px] h-[58px] rounded-xl flex items-center justify-center"
+          style={{ background: bg }}
         >
-          {tech.icon}
+          <Icon size={30} color={color} />
         </div>
       </div>
+      {/* Label */}
       <span
-        className="text-[11px] font-semibold tracking-wide"
-        style={{ color: "rgba(0,0,0,0.45)" }}
+        className="text-[11px] font-semibold tracking-wide transition-colors duration-200 group-hover:text-gray-700"
+        style={{ color: "rgba(0,0,0,0.38)" }}
       >
-        {tech.name}
+        {name}
       </span>
     </div>
   );
@@ -142,7 +109,11 @@ function TechCard({
 
 export default function TechFoundations() {
   return (
-    <section id="technology" style={{ background: "#F7F4EF" }} className="py-24 overflow-hidden">
+    <section
+      id="technology"
+      style={{ background: "#F7F4EF" }}
+      className="py-24 overflow-hidden"
+    >
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 mb-14 text-center space-y-4">
         <p className="text-xs font-bold tracking-widest uppercase text-gray-400">
@@ -158,21 +129,28 @@ export default function TechFoundations() {
         </p>
       </div>
 
-      {/* ── Single Marquee Row ── */}
-      <div className="relative w-full py-4">
-        {/* Left fade */}
+      {/* ── Infinite marquee ── */}
+      <div className="relative w-full py-6">
+        {/* Left edge fade */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to right, #F7F4EF 0%, transparent 100%)" }}
+          className="absolute left-0 top-0 bottom-0 w-40 z-10 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, #F7F4EF 0%, rgba(247,244,239,0) 100%)",
+          }}
         />
-        {/* Right fade */}
+        {/* Right edge fade */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to left, #F7F4EF 0%, transparent 100%)" }}
+          className="absolute right-0 top-0 bottom-0 w-40 z-10 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to left, #F7F4EF 0%, rgba(247,244,239,0) 100%)",
+          }}
         />
 
+        {/* Scrolling track — pausable on hover */}
         <div
-          className="flex gap-5 animate-marquee"
+          className="flex gap-6 animate-marquee"
           style={{ width: "max-content" }}
         >
           {allTechs.map((tech, i) => (
@@ -181,8 +159,7 @@ export default function TechFoundations() {
         </div>
       </div>
 
-      {/* Footer note */}
-      <p className="text-center text-gray-400 text-sm mt-10 max-w-xl mx-auto px-6 leading-relaxed">
+      <p className="text-center text-gray-400 text-sm mt-8 max-w-xl mx-auto px-6 leading-relaxed">
         We leverage best-in-class technologies to build robust, scalable
         solutions that drive enterprise transformation.
       </p>
